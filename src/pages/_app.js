@@ -4,7 +4,7 @@ import Head from "next/head";
 import { globalStyles } from "../styles/reset";
 import { Provider } from "mobx-react";
 import CountryCodeStore from "../stores/mainStore/countryCode";
-
+import { appWithTranslation } from "../i18n";
 import initializeStore from "../stores/stores";
 
 class MyApp extends App {
@@ -46,4 +46,4 @@ class MyApp extends App {
   }
 }
 
-export default MyApp;
+export default appWithTranslation(MyApp);
