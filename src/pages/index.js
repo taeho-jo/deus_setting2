@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import { i18n, Link, withTranslation } from "../i18n";
 
 const Home = ({ t }) => {
@@ -18,6 +19,10 @@ const Home = ({ t }) => {
 Home.getInitialProps = async () => ({
   namespacesRequired: ["common"]
 });
+
+Home.propTypes = {
+  t: PropTypes.func.isRequired
+};
 
 export default withTranslation("common")(Home);
 
