@@ -1,20 +1,42 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import { i18n, Link, withTranslation } from "../i18n";
+import { i18n, withTranslation } from "../i18n";
+import Layout from "../components/Layout";
+import { observer } from "mobx-react";
+import { AuthStore } from "../stores/authStore";
 
-const Home = ({ t }) => {
-  return (
-    <>
-      <Link href="/counter">
-        <Div>{t("hi")}</Div>
-      </Link>
-      <Div>{t("home")}</Div>
-      <Button onClick={() => i18n.changeLanguage("en")}>EN</Button>
-      <Button onClick={() => i18n.changeLanguage("ko")}>KO</Button>
-    </>
-  );
-};
+@observer
+class Home extends Component {
+  check = () => {
+    const token = sessionStorage.getItem("idToken");
+    console.log(token);
+  };
+
+  render() {
+    const { t } = this.props;
+    return (
+      <Layout>
+        <Div>{t("helloMessage")}</Div>
+        {AuthStore.isLogin && <Div>{AuthStore.isLoginUser.email}</Div>}
+        {AuthStore.isLogin && (
+          <Div>{AuthStore.googleLoginUser.displayName}</Div>
+        )}
+        {AuthStore.isLogin && (
+          <Div>{AuthStore.facebookLoginUser.facebookEmail}</Div>
+        )}
+        {AuthStore.isLogin ? (
+          <div>{t("logout")}</div>
+        ) : (
+          <div>{t("signIn")}</div>
+        )}
+        <Button onClick={() => i18n.changeLanguage("en")}>EN</Button>
+        <Button onClick={() => i18n.changeLanguage("ko")}>KO</Button>
+        <Button onClick={this.check}>TOKEN</Button>
+      </Layout>
+    );
+  }
+}
 
 Home.getInitialProps = async () => ({
   namespacesRequired: ["common"]

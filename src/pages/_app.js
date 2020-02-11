@@ -2,11 +2,16 @@ import React from "react";
 import App, { Container } from "next/app";
 import Head from "next/head";
 import { globalStyles } from "../styles/reset";
-import { Provider } from "mobx-react";
-import CountryCodeStore from "../stores/mainStore/countryCode";
+import { Provider, observer } from "mobx-react";
+import CountryCodeStore from "../service/countryCode";
 import { appWithTranslation } from "../i18n";
 import initializeStore from "../stores/stores";
+import firebase from "../firebase";
+import { unKonwnUser, maintainState } from "../service/authService";
 
+const Auth = firebase.auth();
+
+@observer
 class MyApp extends App {
   static async getInitialProps(appContext) {
     const mobxStore = initializeStore();
@@ -20,6 +25,9 @@ class MyApp extends App {
 
   componentDidMount() {
     CountryCodeStore.getGeoInfo();
+    unKonwnUser();
+    maintainState();
+    // console.log(AuthStore.isLoginUser.);
   }
 
   constructor(props) {

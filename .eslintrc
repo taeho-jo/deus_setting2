@@ -11,7 +11,7 @@
     "sourceType": "module"
   },
   "rules": {
-    "no-console": "warn",
+    "no-console": "off",
     "no-eval": "error",
     "import/first": "error"
   },

@@ -1,10 +1,13 @@
 {
-  "hi": "hello world",
-  "home": "home page",
-  "bye": "byebye",
-  "a": "hello world",
-  "b": "byebye world",
-  "c": "next.js",
-  "d": "come on come on",
-  "e": "why why why"
+  "beforeLogin": "Please SIGN IN ~^_^",
+  "logout": "logout",
+  "signIn": "Sign In",
+  "signUp": "Sign Up",
+  "email": "enter your email",
+  "password": "enter your password",
+  "mycalendar": "Calender",
+  "myreservation": "Reservation",
+  "cart": "Cart",
+  "profile": "Profile",
+  "helloMessage": "Hello~"
 }
