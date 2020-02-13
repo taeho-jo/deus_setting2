@@ -2,6 +2,10 @@ import { observable } from "mobx";
 
 export const AuthStore = observable({
   isLogin: false,
+  inputValue: {
+    email: "",
+    password: ""
+  },
   isLoginUser: {
     email: "",
     uid: "",
@@ -15,6 +19,13 @@ export const AuthStore = observable({
   facebookLoginUser: {
     facebookEmail: "",
     uid: ""
+  },
+
+  isValue(email, password) {
+    this.inputValue = {
+      email,
+      password
+    };
   },
 
   isLogined() {

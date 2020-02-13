@@ -8,6 +8,6 @@ export const moveHome = () => {
   Router.push("/");
 };
 
-export const moveSignIn = () => {
-  Router.push("/sign_in");
+export const moveSignUp = () => {
+  Router.push("/sign_up");
 };

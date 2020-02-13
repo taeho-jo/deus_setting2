@@ -13,6 +13,10 @@ class Home extends Component {
     console.log(token);
   };
 
+  checkClick = () => {
+    console.log("dndkdndk");
+  };
+
   render() {
     const { t } = this.props;
     return (
