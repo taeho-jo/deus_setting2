@@ -5,6 +5,9 @@ import { i18n, withTranslation } from "../i18n";
 import Layout from "../components/Layout";
 import { observer } from "mobx-react";
 import { AuthStore } from "../stores/authStore";
+import Subheader from "../components/Subheader/Subheader";
+import Mainpage from "../components/Mainpage/Mainpage";
+import Footer from "../components/Footer/Footer";
 
 @observer
 class Home extends Component {
@@ -21,22 +24,9 @@ class Home extends Component {
     const { t } = this.props;
     return (
       <Layout>
-        <Div>{t("helloMessage")}</Div>
-        {AuthStore.isLogin && <Div>{AuthStore.isLoginUser.email}</Div>}
-        {AuthStore.isLogin && (
-          <Div>{AuthStore.googleLoginUser.displayName}</Div>
-        )}
-        {AuthStore.isLogin && (
-          <Div>{AuthStore.facebookLoginUser.facebookEmail}</Div>
-        )}
-        {AuthStore.isLogin ? (
-          <div>{t("logout")}</div>
-        ) : (
-          <div>{t("signIn")}</div>
-        )}
-        <Button onClick={() => i18n.changeLanguage("en")}>EN</Button>
-        <Button onClick={() => i18n.changeLanguage("ko")}>KO</Button>
-        <Button onClick={this.check}>TOKEN</Button>
+        <Subheader />
+        <Mainpage />
+        <Footer></Footer>
       </Layout>
     );
   }
@@ -51,16 +41,3 @@ Home.propTypes = {
 };
 
 export default withTranslation("common")(Home);
-
-const Div = styled.div`
-  width: 100%;
-  height: 100%;
-  margin-top: 10px;
-  color: white;
-  font-size: 20px;
-  background: #273c75;
-`;
-const Button = styled.button`
-  background: red;
-  color: white;
-`;

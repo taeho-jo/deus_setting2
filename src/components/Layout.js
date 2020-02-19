@@ -14,21 +14,24 @@ class Layout extends Component {
     return (
       <>
         <Nav>
-          <MenuDiv>
-            <NavMeun>{t("mycalendar")}</NavMeun>
-            <NavMeun>{t("myreservation")}</NavMeun>
-            <NavMeun>{t("cart")}</NavMeun>
-            {AuthStore.isLogin ? (
-              <>
-                <NavMeun onClick={logout}>{t("profile")}</NavMeun>
-                <BellIcon />
-              </>
-            ) : (
-              <NavLogin onClick={moveLogin}>{t("signIn")}</NavLogin>
-            )}
-          </MenuDiv>
+          <Ddiv>
+            <P>DeusAdventures</P>
+            <MenuDiv>
+              <NavMeun>{t("mycalendar")}</NavMeun>
+              <NavMeun>{t("myreservation")}</NavMeun>
+              <NavMeun>{t("cart")}</NavMeun>
+              {AuthStore.isLogin ? (
+                <>
+                  <NavMeun onClick={logout}>{t("profile")}</NavMeun>
+                  <BellIcon />
+                </>
+              ) : (
+                <NavLogin onClick={moveLogin}>{t("signIn")}</NavLogin>
+              )}
+            </MenuDiv>
+          </Ddiv>
         </Nav>
-        <div>{children}</div>
+        <Div>{children}</Div>
       </>
     );
   }
@@ -42,10 +45,26 @@ export default withTranslation("common")(Layout);
 
 const Nav = styled.div`
   height: 64px;
-  border-bottom: 1px solid gray;
+  width: 100%;
+  /* max-width: 1280px; */
+  /* border-bottom: 1px solid gray; */
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
+  background-color: #f9f9f9;
+`;
+
+const P = styled.p`
+  width: 116px;
+  height: 36px;
+  font-family: NotoSansCJKkr;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1.5;
+  letter-spacing: normal;
+
+  color: #66696a;
+  margin-left: 32px;
 `;
 
 const MenuDiv = styled.div`
@@ -56,7 +75,7 @@ const MenuDiv = styled.div`
 const NavMeun = styled.h1`
   margin-right: 32px;
   font-size: 14px;
-  font-family: "NotoSansCJKkr";
+  font-family: NotoSansCJKkr;
   font-weight: 500;
   font-stretch: normal;
   font-style: normal;
@@ -73,4 +92,20 @@ const BellIcon = styled.div`
   margin-right: 32px;
   width: 24px;
   height: 24px;
+`;
+
+const Div = styled.div`
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Ddiv = styled.div`
+  width: 100%;
+  max-width: 1280px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
 `;

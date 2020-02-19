@@ -2,6 +2,7 @@ import { observable } from "mobx";
 
 export const AuthStore = observable({
   isLogin: false,
+  loginUserName: "홍길동",
   inputValue: {
     email: "",
     password: ""

@@ -4,6 +4,7 @@ import { withTranslation } from "../../i18n";
 import { emailLogin } from "../../service/authService";
 import { observer } from "mobx-react";
 import { AuthStore } from "../../stores/authStore";
+import { findPassword } from "../../service/routerService";
 
 @observer
 class InputPage extends Component {
@@ -51,7 +52,7 @@ class InputPage extends Component {
           </Div>
         </InputBox>
         <FlexBox>
-          <ForgetPassword>{msg}</ForgetPassword>
+          <ForgetPassword onClick={findPassword}>{msg}</ForgetPassword>
         </FlexBox>
         <LoginButton onClick={login}>{sign}</LoginButton>
       </>
